@@ -99,10 +99,11 @@ jobs:
         uses: azure/CLI@v1
         with:
           inlineScript: |
-            az group create -g ${{ secrets.RESOURCE_GROUP }} -l eastus
+            az group create -g ${{ secrets.RESOURCE_GROUP }} -l westeurope
             az deployment group create -g ${{ secrets.RESOURCE_GROUP }} -f ./deploy/bicep-external/main.bicep --parameters \
             apiImage='${{ needs.package-services.outputs.api-image }}' \
             viewerImage='${{ needs.package-services.outputs.ui-image }}' \
             registryName=${{ env.REGISTRY }} \
             registryUsername=${{ github.actor }} \
-            registryPassword=${{ secrets.GITHUB_TOKEN }}
+            registryPassword=${{ secrets.GITHUB_TOKEN }} \
+            -l westeurope
