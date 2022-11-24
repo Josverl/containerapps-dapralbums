@@ -11,7 +11,7 @@ on:
   workflow_dispatch:
 
 env:
-  REGISTRY: jvdapralbums1.azurecr.io
+  REGISTRY: ghcr.io
   IMAGE_NAME: ${{ github.repository }}
 jobs:
   set-env:
